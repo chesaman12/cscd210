@@ -13,6 +13,7 @@ squareOfAsterisks - takes a single int for the number of rows and colums. Prints
 that has an equal number of rows and columns.
 */
 import java.util.Random;
+import java.util.Arrays;
 
 public class Methods3{
    public static String evenChar(String word){
@@ -29,21 +30,28 @@ public class Methods3{
       int[] array = new int[arraysize];
       Random rand = new Random();
       int randnum = 0;
-      for( int i = 0; i <= arraysize; i++){ 
+      for( int i = 0; i < arraysize; i++){ 
         randnum = rand.nextInt(bound);
         array[i] = randnum;
       }
       return array;
    }
    
-  /* public static void(int num){
-      
+   public static void squareOfAsterisks(int num){
+      for(int i = 0; i < num; i++){
+         for(int j = 0; j < num; j++){
+            System.out.print("*");
+         }
+         System.out.print("\n");
+      }
       
    
    }
-   */
-   public static void main(String[] args){
+   
+  /* public static void main(String[] args){
    System.out.println(evenChar("h0ist8h8e7rge"));
-   System.out.println(arrayFill(5, 10));
-   }
+   System.out.println(Arrays.toString(arrayFill(5, 10)));
+   squareOfAsterisks(5);
+
+   }*/
 }
