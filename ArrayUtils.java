@@ -4,9 +4,17 @@ public class ArrayUtils{
       int[] testArray = {20,21,22,23,24,25,26,27};
       int[] testArray2 = {54,14,15,75,12,90,3,42};
       int[] test = {3,1,4,2};
+<<<<<<< HEAD
       removeElement(test,6);
       
    
+=======
+      printArray(sortArray(test));
+      //printArray(sortArray(testArray2));
+      //cloneArray(testArray);
+      //System.out.println(searchArray(testArray,3));
+      //printArray(removeElement(testArray,3));
+>>>>>>> origin/master
    }
    
    public static void printArray(int[] array){
@@ -39,7 +47,20 @@ public class ArrayUtils{
    }
 
    public static int[] removeElement(int[] array){
+<<<<<<< HEAD
 
+=======
+//       int[] temp = new int[array.length - 1];
+//       for(int ix = 0; ix < temp.length; ix++){
+//          if(ix == temp.length){
+//             //remove last value (do nothing)
+//          }
+//          else{
+//             temp[ix] = array[ix];
+//          }
+//       }
+//       return temp;
+>>>>>>> origin/master
       return removeElement(array, array.length - 1);
    }
    
@@ -47,8 +68,13 @@ public class ArrayUtils{
    public static int[] removeElement(int[] array, final int index){
       int[] temp = new int[array.length - 1];
       for(int ix = 0, y = 0; ix < array.length; ix++){
+<<<<<<< HEAD
          if(index > ix){
             throw new IllegalArgumentException("Bad Parameter");
+=======
+         if(index != ix){
+           temp[y++] = array[ix];
+>>>>>>> origin/master
          }
          if(index != ix){
            temp[y++] = array[ix];
@@ -67,9 +93,15 @@ public class ArrayUtils{
       return num;
    }
    
+<<<<<<< HEAD
    
     public static void sortArray(int[] array) {
         
+=======
+   //not finished
+    public static int[] sortArray(int[] array) {
+        //int[] temp = new int[array.length];
+>>>>>>> origin/master
         boolean swapped = false;
         do {
             swapped = false;
@@ -80,11 +112,19 @@ public class ArrayUtils{
                     array[ix - 1] = temp;
                     swapped = true;
                 }
+<<<<<<< HEAD
                 
             }
 
         } while (swapped);
         
+=======
+                //printArray(array);
+            }
+
+        } while (swapped);
+        return array;
+>>>>>>> origin/master
     }
    
    public static int[] cloneArray(int[] array){
