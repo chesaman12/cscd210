@@ -1,9 +1,10 @@
 import java.util.Scanner;
+import java.io.File;
 import java.util.InputMismatchException;
 
 public class Statistics{
    public static void main(String[] args){
-      int[] array = {1,2,3};
+      int[] array = {1,2,3,4};
       userInterface(array);
    }
    
@@ -54,22 +55,28 @@ public class Statistics{
                printArray(array);
                break;
             case 5:
-               System.out.println(mean(array));
+               System.out.println("The mean is: " + mean(array));
                break;
             case 6:
-               System.out.println(median(array));
+               System.out.println("The median is: " + median(array));
                break;
             case 7:
-               //System.out.println(mean(array));
+               System.out.println("The midpoint is: " + midpoint(array));
                break;
             case 8:
-               //System.out.println(mean(array));
+               System.out.println("The mode(s) is: " + mode(array));
                break;
             case 9:
+               System.out.println("The standard deviation is: " + standardDev(array));
                break;
             case 10:
+               //System.out.println("File saved! ");
+               //fileWrite(array);
                break;
             case 11:
+               //array = fileRead(array);
+               //System.out.println("File loaded! Array is now: " + printArray(array););
+               
                break;
          
             
@@ -170,5 +177,57 @@ public class Statistics{
       
       } while (swapped);
         
-   }      
+   }
+   
+   public static int midpoint(int[] array){
+      sortArray(array);
+      int first = array[0];
+      int last = array[array.length - 1];
+      int sum = first + last;
+      return sum /2;
+   
+   }    
+   
+   public static int mode(int[] array){
+      int maxValue = 0;
+      int maxCount = 0;
+   
+      for (int i = 0; i < array.length; ++i) {
+         int count = 0;
+         for (int j = 0; j < array.length; ++j) {
+            if (array[j] == array[i]){
+               count++;
+            }
+         }
+         
+        
+         if (count > maxCount) {
+            maxCount = count;
+            maxValue = array[i];
+         }
+      }
+   
+      return maxValue;
+   
+   }
+   
+   public static double standardDev(int[] array){
+      //double mean = mean(array);
+      double mean = mean(array);
+      double sum = 0;
+      double[] temp = new double[array.length];
+      for (int i = 0; i < array.length; i++) {
+         temp[i] = array[i] - mean;
+         temp[i] = temp[i]*2;
+         sum += temp[i];
+      }
+      sum = sum / (array.length - 1);
+      return Math.sqrt(sum);
+   }  
+   
+   public static void fileWrite(int[] array){
+ 
+      
+   
+   }
 }
