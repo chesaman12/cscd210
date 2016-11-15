@@ -1,14 +1,15 @@
-import java.util.Scanner;
-import java.io.File;
+import java.util.*;
+import java.io.*;
+import java.nio.file.*;
 import java.util.InputMismatchException;
 
 public class Statistics{
-   public static void main(String[] args){
-      int[] array = {1,2,3,4};
-      userInterface(array);
+   public static void main(String[] args)throws Exception{
+      int[] list = {1,2,3,4};
+      userInterface(list);
    }
    
-   public static int[] userInterface(int[] array){
+   public static int[] userInterface(int[] list)throws Exception{
       boolean done = false;
       do{
          Scanner scan = new Scanner(System.in);
@@ -41,41 +42,42 @@ public class Statistics{
                break;
             case 1: 
                System.out.print("Enter the element to add to the list: ");
-               array = addValue(array, scan.nextInt());
+               list = addValue(list, scan.nextInt());
                break; 
             case 2:
                System.out.print("Enter the integer to remove from the list: ");
-               array = removeInt(array, scan.nextInt());
+               list = removeInt(list, scan.nextInt());
                break;
             case 3: 
                System.out.print("Enter the element to remove from the list: ");
-               array = removeIndex(array, scan.nextInt());
+               list = removeIndex(list, scan.nextInt());
                break;   
             case 4: 
-               printArray(array);
+               printArray(list);
                break;
             case 5:
-               System.out.println("The mean is: " + mean(array));
+               System.out.println("The mean is: " + mean(list));
                break;
             case 6:
-               System.out.println("The median is: " + median(array));
+               System.out.println("The median is: " + median(list));
                break;
             case 7:
-               System.out.println("The midpoint is: " + midpoint(array));
+               System.out.println("The midpoint is: " + midpoint(list));
                break;
             case 8:
-               System.out.println("The mode(s) is: " + mode(array));
+               System.out.println("The mode(s) is: " + mode(list));
                break;
             case 9:
-               System.out.println("The standard deviation is: " + standardDev(array));
+               System.out.println("The standard deviation is: " + standardDev(list));
                break;
             case 10:
-               //System.out.println("File saved! ");
-               //fileWrite(array);
+               System.out.println("File saved! ");
+               fileWrite(list);
                break;
             case 11:
-               //array = fileRead(array);
-               //System.out.println("File loaded! Array is now: " + printArray(array););
+               File Filename = new File("arrays.txt");
+               list = fileRead(Filename);
+               System.out.println("File loaded!");;
                
                break;
          
@@ -87,15 +89,15 @@ public class Statistics{
          }
       }
          while(!done);
-      return array;
+      return list;
    }
    
-   public static int[] addValue(int[] array, final int element){
-      int[] temp = new int[array.length + 1];
+   public static int[] addValue(int[] list, final int element){
+      int[] temp = new int[list.length + 1];
       for(int ix = 0; ix < temp.length; ix++){
          
-         if(ix != array.length){
-            temp[ix] = array[ix];
+         if(ix != list.length){
+            temp[ix] = list[ix];
          }
          else{
             temp[ix] = element;
@@ -104,72 +106,72 @@ public class Statistics{
       }
       return temp;   
    }
-   public static void printArray(int[] array){
-      for(int ix = 0; ix < array.length; ix++){
-         if(ix == array.length - 1){
-            System.out.print(array[ix]);
+   public static void printArray(int[] list){
+      for(int ix = 0; ix < list.length; ix++){
+         if(ix == list.length - 1){
+            System.out.print(list[ix]);
          }
          else{
-            System.out.print(array[ix]+",");
+            System.out.print(list[ix]+",");
          }
       }
    
       System.out.print("\n");
    
    }
-   public static int[] removeIndex(int[] array, final int index){
-      int[] temp = new int[array.length - 1];
-      for(int ix = 0, y = 0; ix < array.length; ix++){
+   public static int[] removeIndex(int[] list, final int index){
+      int[] temp = new int[list.length - 1];
+      for(int ix = 0, y = 0; ix < list.length; ix++){
          /*if(index > ix){
             throw new IllegalArgumentException("Bad Parameter");
          }*/
          if(index != ix){
-            temp[y++] = array[ix];
+            temp[y++] = list[ix];
          } 
       }
       return temp;
    }
    
-   public static int[] removeInt(int[] array, final int integer){
-      int[] temp = new int[array.length - 1];
-      for(int ix = 0, y = 0; ix < array.length; ix++){
+   public static int[] removeInt(int[] list, final int integer){
+      int[] temp = new int[list.length - 1];
+      for(int ix = 0, y = 0; ix < list.length; ix++){
         /* if(integer > ix){
             //throw new IllegalArgumentException("Bad Parameter");
          }*/
-         if(integer != array[ix]){
-            temp[y++] = array[ix];
+         if(integer != list[ix]){
+            temp[y++] = list[ix];
          } 
       }
       return temp;
    }
-   public static double mean(int[] array){
+   public static double mean(int[] list){
       double sum = 0;
-      for(int i = 0; i < array.length; i++){
-         sum += array[i];
+      for(int i = 0; i < list.length; i++){
+         sum += list[i];
       }
-      return sum / array.length;
+      return sum / list.length;
    }
    
-   public static double median(int[] array) {
-      sortArray(array);
-      int med = array.length/2;
-      if (array.length%2 == 1) {
-         return array[med];
+   public static double median(int[] list) {
+      sortArray(list);
+      int med = list.length/2;
+      if (list.length%2 == 1) {
+         return list[med];
       } 
       else {
-         return (array[med-1] + array[med]) / 2.0;
+         return (list[med-1] + list[med]) / 2.0;
       }
    }  
-   public static void sortArray(int[] array) {
+   public static void sortArray(int[] list) {
         
       boolean swapped = false;
       do {
          swapped = false;
-         for (int ix = 1; ix < array.length; ix++) {
-            if (array[ix] < array[ix - 1]) { 
-               int temp = array[ix];          
-               array[ix] = array[ix - 1];
-               array[ix - 1] = temp;
+         for (int ix = 1; ix < list.length; ix++) {
+            if (list[ix] < list[ix - 1]) { 
+               int temp = list[ix];          
+               list[ix] = list[ix - 1];
+               list[ix - 1] = temp;
                swapped = true;
             }
                 
@@ -179,31 +181,40 @@ public class Statistics{
         
    }
    
-   public static int midpoint(int[] array){
-      sortArray(array);
-      int first = array[0];
-      int last = array[array.length - 1];
+   public static int midpoint(int[] list){
+      sortArray(list);
+      int first = list[0];
+      int last = list[list.length - 1];
       int sum = first + last;
       return sum /2;
    
    }    
    
-   public static int mode(int[] array){
+   public static int mode(int[] list){
+   
+   //1.  create a temp array, size of N, where N is your largest value
+   //2a. loop through array, each value in the array refers to indice in temp array
+   //2b. increment indice value
+   //3.  walk through temp array, returning largest values
+   //3a. loop through the temp array once, finding the greatest count
+   //3b. loop through the temp array again, returning items with greatest count
+   
       int maxValue = 0;
       int maxCount = 0;
    
-      for (int i = 0; i < array.length; ++i) {
+      for (int i = 0; i < list.length; ++i) {
          int count = 0;
-         for (int j = 0; j < array.length; ++j) {
-            if (array[j] == array[i]){
+         for (int j = 0; j < list.length; ++j) {
+            if (list[j] == list[i]){
                count++;
             }
          }
          
         
+         
          if (count > maxCount) {
             maxCount = count;
-            maxValue = array[i];
+            maxValue = list[i];
          }
       }
    
@@ -211,23 +222,52 @@ public class Statistics{
    
    }
    
-   public static double standardDev(int[] array){
-      //double mean = mean(array);
-      double mean = mean(array);
+   public static double standardDev(int[] list){
+      double mean = mean(list);
       double sum = 0;
-      double[] temp = new double[array.length];
-      for (int i = 0; i < array.length; i++) {
-         temp[i] = array[i] - mean;
-         temp[i] = temp[i]*2;
+      double[] temp = new double[list.length];
+      for (int i = 0; i < list.length; i++) {
+         temp[i] = list[i] - mean;
+         temp[i] = temp[i] * temp[i];
          sum += temp[i];
       }
-      sum = sum / (array.length - 1);
+      sum = sum / (list.length - 1);
       return Math.sqrt(sum);
    }  
-   
-   public static void fileWrite(int[] array){
- 
+   public static void fileWrite(int[] list) throws Exception {
+      PrintStream file0 = new PrintStream("arrays.txt");
+      for (int ix = 0; ix < list.length; ix++){
+         file0.println(list[ix]);
       
+   }
+}
+  /* 
+   public static void fileWrite(int[] list){
+      System.out.println(Arrays.toString(System.getProperty("line.separator").getBytes()));
+      //System.exit(0);
+      String listString = list.length + "\n";
+      for(int val : list){
+         //arrayString += val + System.getProperty("line.separator");
+         listString += val + "\n";
+      }
+     */ 
    
+   
+   public static int[] fileRead(File Filename) throws Exception{
+   int count = 0;
+   Scanner file1Count = new Scanner(Filename);
+   Scanner file1 = new Scanner(Filename);
+   
+   while (file1Count.hasNext()){
+      int num = file1Count.nextInt();
+      count++;
+   }
+   int[] list = new int [count];
+   for (int ix = 0; ix < count; ix++){
+      list[ix] = file1.nextInt();
+   
+   }
+   file1.close();
+   return list;
    }
 }
