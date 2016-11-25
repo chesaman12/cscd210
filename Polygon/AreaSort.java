@@ -1,11 +1,9 @@
-public class AreaSort{
+import java.util.Comparator;
+public class AreaSort implements Comparator<RegularPolygon>{
      public int compare(RegularPolygon rp1, RegularPolygon rp2){
-      if(rp1.getArea() > rp2.getArea()){
-         return 1;
-      }else if(rp1.getArea() < rp2.getArea()){
-         return -1;
-      }
-      return 0;
-      }
+      Double area1 = rp1.getArea();
+      Double area2 = rp2.getArea();
+      
+      return area1.compareTo(area2);
 
 }

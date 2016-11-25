@@ -1,3 +1,4 @@
+import java.util.Comparator;
 public class RegularPolygon{
 
    private int sides;
@@ -65,7 +66,7 @@ public class RegularPolygon{
       return apothem;
    }
    
-   public int compareTo(RegularPolygon that){
+   public int compareTo (RegularPolygon that){
       if (this.sides > that.sides){ 
          return 1;
       }else if (this.sides < that.sides){
