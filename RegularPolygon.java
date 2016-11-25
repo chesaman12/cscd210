@@ -61,7 +61,7 @@ public class RegularPolygon{
    
    public double getApothem(){
    //Length of Single Side / (2.0 * tangent(180 / Number of Sides)
-      double apothem = sides / (2 * Math.tan(Math.PI / sides));
+      double apothem = sideLength / (2 * Math.tan(Math.PI / sides));
       return apothem;
    }
    
