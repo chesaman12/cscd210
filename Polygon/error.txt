@@ -1,0 +1,31 @@
+ ----jGRASP exec: java RegularPolygonTester
+Approximate PI using RegularPolygon class.
+1000000 sides - PI: 3.141592653600129
+2000000 sides - PI: 3.1415926535923773
+3000000 sides - PI: 3.1415926535909415
+4000000 sides - PI: 3.1415926535904393
+5000000 sides - PI: 3.141592653590207
+6000000 sides - PI: 3.14159265359008
+7000000 sides - PI: 3.141592653590004
+8000000 sides - PI: 3.1415926535899543
+9000000 sides - PI: 3.1415926535899206
+10000000 sides - PI: 3.1415926535898966
+
+Testing Sorts:
+Sides: 6 Side Length: 0.5 Perimeter: 3.0 Area: 0.649519052838329
+Sides: 8 Side Length: 1.0 Perimeter: 8.0 Area: 4.82842712474619
+Sides: 3 Side Length: 0.2 Perimeter: 0.6000000000000001 Area: 0.01732050807568878
+Sides: 6 Side Length: 0.4 Perimeter: 2.4000000000000004 Area: 0.41569219381653066
+Sides: 3 Side Length: 1.0 Perimeter: 3.0 Area: 0.43301270189221946
+Sides: 7 Side Length: 1.0 Perimeter: 7.0 Area: 3.6339124440015893
+Sides: 5 Side Length: 0.6 Perimeter: 3.0 Area: 0.6193718642120281
+Sides: 6 Side Length: 1.0 Perimeter: 6.0 Area: 2.598076211353316
+Sides: 7 Side Length: 1.0 Perimeter: 7.0 Area: 3.6339124440015893
+Sides: 4 Side Length: 1.0 Perimeter: 4.0 Area: 1.0000000000000002
+Sides: 14 Side Length: 0.05 Perimeter: 0.7000000000000001 Area: 0.03833625484092971
+
+Exception in thread "main" java.lang.ClassCastException: RegularPolygon cannot be cast to java.lang.Comparable
+	at java.util.ComparableTimSort.countRunAndMakeAscending(ComparableTimSort.java:320)
+	at java.util.ComparableTimSort.sort(ComparableTimSort.java:188)
+	at java.util.Arrays.sort(Arrays.java:1246)
+	at RegularPolygonTester.main(RegularPolygonTester.java:29)
