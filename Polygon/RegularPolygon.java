@@ -3,38 +3,39 @@ public class RegularPolygon{
 
    private int sides;
    private double sideLength;
-   private int pSides;
-   private double pSideLength;
-   
+  // private int pSides;
+  // private double pSideLength;
+   //take out private psides and psideLength and make varaibles with this.var
    
    public RegularPolygon(){
-      sides = 3;
-      sideLength = 1.0;
+      this.sides = 3;
+      this.sideLength = 1.0;
    }
    public RegularPolygon(int pSides){
-      sides = pSides;
-      sideLength = 1.0;
+      this.sides = pSides;
+      this.sideLength = 1.0;
    }
-   public RegularPolygon(double pSideLenth){
-      sideLength = pSideLength;
-      sides = 3;
+   public RegularPolygon(double pSideLength){
+      this.sideLength = pSideLength;
+      this.sides = 3;
    }
-   public RegularPolygon(int pSides, double pSideLenth){
-      sideLength = pSideLength;
-      sides = pSides;
+   public RegularPolygon(int pSides, double pSideLength){
+      this.sideLength = pSideLength;
+      this.sides = pSides;
    }
    
    public int getSides(){
-      return sides;
+      //return this.sides;
+      return this.sides;
    }
    
    public double getSideLength(){
-      return sideLength;
+      return this.sideLength;
    }
    
    public void setSides(int psides){
-      if(pSides >= 3){
-         sides = pSides;
+      if(this.sides >= 3){
+         this.sides = psides;
       }else{
          throw new IllegalArgumentException("Bad Parameter");
       }
@@ -42,7 +43,7 @@ public class RegularPolygon{
    
    public void setSideLength(double pSideLength){
       if(pSideLength > 0){
-         sideLength = pSideLength;
+         this.sideLength = pSideLength;
       }else{
          throw new IllegalArgumentException("Bad Parameter");
       }
@@ -71,12 +72,13 @@ public class RegularPolygon{
          return 1;
       }else if (this.sides < that.sides){
          return -1;
-      }else{
+      }
+      if(this.sides==that.sides)
          if(this.sideLength > that.sideLength){
             return 1;
          }else if(this.sideLength > that.sideLength)
             return -1;
-         }
+         
       return 0;
       
    }
